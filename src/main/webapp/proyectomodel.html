@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Puto el que lo lea</title>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Ejemplo de uso de arreglos json con tablas mysql relacionadas</h2>
+        <p>Oprime el boton y se buscará la relación de direcciones, cuya
+        dependencia directa es de la clase usuario (sin usuario no hay
+        direcciones!!!)</p>
+        <p>Aquí buscaremos el nombre (tabla usuario) del primer elemento y de dicho usuario
+            obtendremos de su direccion (tabla direccion) su campo codigo postal (cp).</p>
+        <button class="btn btn-success" id="cargarDirecciones">Buscar usuario y c.p.</button>
+        <div id="resultado-direcciones"></div>
+        <script>
+            $(document).ready(function(){
+                $("#cargarDirecciones").click(function(){
+                    $.getJSON("http://localhost:8084/proyecto-controller/servicios1/direccion3", function(datos){
+                       $("#resultado-direcciones").html("El codigo postal de\n\
+              "+datos.direccion[0].u.nombre +" es el "+datos.direccion[0].cp);
+
+                        
+                    });
+                   
+                });
+            });
+        </script>
+    </body>
+</html>
+
